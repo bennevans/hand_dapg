@@ -2,17 +2,18 @@
 
 # general inputs
 
-'env'           :   'relocate-v0',
+'env'           :   'relocate-v1',
 'algorithm'     :   'DAPG',
 'seed'          :   123,
-'num_cpu'       :   5,
-'save_freq'     :   25,
+'num_cpu'       :   32,
+'save_freq'     :   5,
 'eval_rollouts' :   25,
-'exp_notes'     :   'Example config for training policy using DAPG for the relocate-v0 task.',
+'exp_notes'     :   'Example config for training policy using DAPG for the relocate-v1 task.',
 
 # Demonstration data and behavior cloning
 
-'demo_file'     :   '../demonstrations/relocate-v0_demos.pickle',
+#'demo_file'     :   '../demonstrations/relocate-v0_demos.pickle',
+'demo_file'     :   '../demonstrations/relocate-v1_demos_updated.pickle',
 'bc_batch_size' :   32,
 'bc_epochs'     :   5,
 'bc_learn_rate' :   1e-3,

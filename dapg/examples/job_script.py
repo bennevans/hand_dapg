@@ -16,7 +16,8 @@ from mjrl.samplers.core import sample_paths
 import os
 import json
 import mjrl.envs
-import mj_envs
+# import mj_envs
+import robohive
 import time as timer
 import pickle
 import argparse

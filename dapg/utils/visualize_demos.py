@@ -1,4 +1,5 @@
-import mj_envs
+#import mj_envs
+import robohive
 import click 
 import os
 import gym
@@ -21,11 +22,12 @@ def main(env_name):
         print("Unknown env.")
         return
     demos = pickle.load(open('./demonstrations/'+env_name+'_demos.pickle', 'rb'))
+    demos_new = pickle.load(open('./demonstrations/'+env_name+'_demos_updated.pickle', 'rb'))
     # render demonstrations
-    demo_playback(env_name, demos)
+    demo_playback(env_name, demos_new)
 
 def demo_playback(env_name, demo_paths):
-    e = GymEnv(env_name)
+    e = GymEnv(env_name, env_kwargs=dict(obs_keys=['hand_jnt', 'palm_obj_err', 'palm_tar_err', 'obj_tar_err']))
     e.reset()
     for path in demo_paths:
         e.set_env_state(path['init_state_dict'])

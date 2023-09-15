@@ -1,4 +1,5 @@
-import mj_envs
+#import mj_envs
+import robohive
 import click 
 import os
 import gym
@@ -19,7 +20,10 @@ USAGE:\n
 @click.option('--policy', type=str, help='absolute path of the policy file', required=True)
 @click.option('--mode', type=str, help='exploration or evaluation mode for policy', default='evaluation')
 def main(env_name, policy, mode):
-    e = GymEnv(env_name)
+    # kwargs = dict(obs_keys=['hand_jnt', 'palm_obj_err', 'palm_tar_err', 'obj_tar_err'])
+    # kwargs = dict(obs_keys=['hand_jnt', 'palm_obj_err', 'palm_tar_err', 'obj_tar_err', 'obj_pos'])
+    e = GymEnv(env_name, env_kwargs=env_kwargs)
+    # e = gym.make(env_name, obs_keys=['hand_jnt', 'palm_obj_err', 'palm_tar_err', 'obj_tar_err'])
     pi = pickle.load(open(policy, 'rb'))
     # render policy
     e.visualize_policy(pi, num_episodes=100, horizon=e.horizon, mode=mode)
